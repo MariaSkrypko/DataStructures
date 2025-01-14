@@ -2,55 +2,55 @@
 {
         public class List
         {
-            public object[] Items;
-            public int Count;
+            public object[] items;
+            public int count;
 
             public List(int capacity = 4)
             {
-                Items = new object[capacity];
-                Count = 0;
+                items = new object[capacity];
+                count = 0;
             }
 
             public object this[int index]
             {
                 get
                 {
-                    if (index < 0 || index >= Count)
+                    if (index < 0 || index >= count)
                         throw new IndexOutOfRangeException();
-                    return Items[index];
+                    return items[index];
                 }
                 set
                 {
-                    if (index < 0 || index >= Count)
+                    if (index < 0 || index >= count)
                         throw new IndexOutOfRangeException();
-                    Items[index] = value;
+                    items[index] = value;
                 }
             }
 
             public void Add(object item)
             {
-                if (Count == Items.Length)
+                if (count == items.Length)
                 {
-                    var newItems = new object[Items.Length * 2];
-                    for (int i = 0; i < Count; i++)
-                        newItems[i] = Items[i];
-                    Items = newItems;
+                    var newItems = new object[items.Length * 2];
+                    for (int i = 0; i < count; i++)
+                        newItems[i] = items[i];
+                    items = newItems;
                 }
 
-                Items[Count++] = item;
+                items[count++] = item;
             }
 
             public void Clear()
             {
-                Items = new object[4];
-                Count = 0;
+                items = new object[4];
+                count = 0;
             }
 
             public bool Contains(object item)
             {
-                for (int i = 0; i < Count; i++)
+                for (int i = 0; i < count; i++)
                 {
-                    if (Items[i].Equals(item))
+                    if (items[i].Equals(item))
                         return true;
                 }
                 return false;
